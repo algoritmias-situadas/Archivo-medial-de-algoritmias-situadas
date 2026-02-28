@@ -1,0 +1,54 @@
+﻿
+//Al principo por problemas tuve que poner que si la velocidad baja de 0 se regrese a 0.1
+if var.Speed = 0 then var.Speed = 0.1
+
+//La velocidad por defecto debería ser 0.1
+if var.Speed > 5 then var.Speed = 5
+if var.Speed < 0.1 then var.Speed = 0.1
+
+// Con esto se ajusta la sensibilidad del control usando + y -
+if wiimote.Plus then
+    var.Speed = var.Speed + 0.1
+endif
+
+if wiimote.Minus then
+    var.Speed = var.Speed - 0.1
+endif
+
+
+if wiimote.B then
+    if nunchuk.Exists then
+
+        // Movimiento con joystick del Nunchuk
+
+        mouse.x = mouse.x + (nunchuk.JoyX * var.Speed * 0.2)
+        mouse.y = mouse.y + (nunchuk.JoyY * var.Speed * 0.2)
+    else
+
+        // Movimiento con D-pad del control Wii
+
+        if wiimote.Up then
+            mouse.y = mouse.y - var.Speed
+        endif
+        if wiimote.Down then
+            mouse.y = mouse.y + var.Speed
+        endif
+        if wiimote.Left then
+            mouse.x = mouse.x - var.Speed
+        endif
+        if wiimote.Right then
+            mouse.x = mouse.x + var.Speed
+        endif
+    endif
+endif
+
+// Botones del mouse
+mouse.LeftButton = wiimote.A
+mouse.RightButton = wiimote.One
+mouse.MiddleButton = wiimote.Two
+
+
+// Esto muestra la velocidad actual por unos problemas que hubo al inicio
+debug = "Velocidad: " + var.Speed
+
+
