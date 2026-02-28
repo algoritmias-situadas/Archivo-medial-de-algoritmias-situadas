@@ -3,7 +3,7 @@
 // el primer sonido puede ser remplazado en cada interpretación
 //aprender de las secciones
 
-"/Users/mezaga93/Downloads/LCSE/envolventes_fonemas.scd".loadPaths;
+"envolventes_fonemas.scd".loadRelative;
 s.sendBundle(nil, [\error, 0]);
 ~m = Archive.at(\ampMatrixLCSE);
 ~chanOut = 8;
@@ -31,9 +31,10 @@ s.sendBundle(nil, [\error, 0]);
 ~cuadrantes =[nil,nil,nil,nil];
 
 ///carga de archivos de audios
-~folderAnimales = PathName("/Users/mezaga93/Downloads/LCSE/Copia de LosCiborgssonEter/animales/");
-~folderFrases = PathName("/Users/mezaga93/Downloads/LCSE/Copia de LosCiborgssonEter/frases/");
-~folderFonemas = PathName("/Users/mezaga93/Downloads/LCSE/consonantes/");
+~ruta = thisProcess.nowExecutingPath.dirname;
+~folderAnimales = PathName(~ruta ++ "/LosCiborgssonEter/animales/");
+~folderFrases = PathName(~ruta ++ "/LosCiborgssonEter/frases/");
+~folderFonemas = PathName(~ruta ++ "/consonantes/");
 
 ~vocoderBus = Bus.audio(s,1);
 ~animales = [nil,nil,nil,nil,nil,nil];
