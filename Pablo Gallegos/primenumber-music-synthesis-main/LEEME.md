@@ -48,8 +48,6 @@ Este proyecto se publica como una versión funcionalmente completa del Gasch Pri
 
 **PAPIME 404525 Archivo de prácticas mediales en torno de algoritmias situadas**
 
-**Research Snapshot:** `v0.9.0`
-
 ---
 
 ## Solución de problemas
