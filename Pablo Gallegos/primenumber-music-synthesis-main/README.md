@@ -9,7 +9,7 @@ El instrumento integra síntesis, afinación, ritmo y visualización en un **sis
 
 ### Breve demostración de audio
 
-[Escuchar](/assets/audio/GaschPrimeSynth_Demo.mp3)
+[Escuchar](Pablo Gallegos/primenumber-music-synthesis-main/assets/audio/GaschPrimeSynth_Demo.mp3)
 
 
 ---
