@@ -6,12 +6,6 @@ El sistema implementa **espectros primos** (formas de onda construidas con armó
 
 El instrumento integra síntesis, afinación, ritmo y visualización en un **sistema de interpretación compatible con MIDI y teclado QWERTY**, sin necesidad de bibliotecas externas ni samples. Fue utilizado para componer una obra de música electrónica y como una exploración de investigación artística sobre la abstracción numérica en el sonido.
 
-
-### Breve demostración de audio
-
-[Escuchar](/primenumber-music-synthesis-main/assets/audio/GaschPrimeSynth_Demo.mp3)
-
-
 ---
 
 ## Inicio rápido
