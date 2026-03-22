@@ -12,16 +12,18 @@ s.boot;
 )
 
 
+~t.tempo = 105/60;
+
 ////////////////// FUNCIONES ////////////////////////
 // en caso de que se hayan detenido los grupos y ejecuta la siguiente línea y
 // ~inicio.()
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+~reverbBus.postln;
 ( // se puede evaluar y reproducir esta sección
 Pdef(\lsystem, Pspawner({
 	arg sp;
-	var beatInicio = thisThread.clock.beats;
+	var beatInicio = thisThread.clock.beats, beatActual;
 
 
 	~pbs = ~secuencias.(
@@ -30,14 +32,14 @@ Pdef(\lsystem, Pspawner({
 		instrumentos:        [\sampler    ], // esto tiene que ser un arreglo
 		buffer:              [~smp        ], // si no se asigna un sample por defecto será nil
 		silencios:           [[]          ],
-		loop:                [0           ],
+		loop:                [1           ],
 		repSecuencia:        [1           ],
-		durRaiz:             [20          ],
+		dur:                 [inf         ],
 		escala: Scale.lydian,
 		pan:                 [0           ],
 		attack:              [1           ],
 		release:             [1.5         ],
-		amp:                 [-2.dbamp    ],
+		amp:                 [15.dbamp    ],
 		sendLvl:             [0           ],
 	);
 
@@ -45,28 +47,23 @@ Pdef(\lsystem, Pspawner({
 
 	Pbindef(\p0, \group, ~p0Group);
 
-	sp.par(Pfindur(10, Pdef(\perc1)));
-	sp.par(Pfindur(10, Pdef(\perc2)));
-	sp.par(Pfindur(10, Pbindef(\p0)));
+	beatInicio = thisThread.clock.beats;
+	beatActual = thisThread.clock.beats - beatInicio;
+	beatActual.debug("Beat Actual");
+
+	sp.par(Pfindur(20, Pdef(\perc1)));
+	sp.par(Pfindur(20, Pdef(\perc2)));
+	sp.par(Pfindur(20, Pbindef(\p0)));
+
+	sp.wait(20);
 	~p0Group.set(\gate, 0);
-
-	/*loop {
-		var beatsTranscurridos = thisThread.clock.beats - beatInicio;
-
-		postln("Contador Beat: " ++ beatsTranscurridos.round(0.01));
-
-		if (beatsTranscurridos >= 10) {
-			// sp.suspendAll;
-			sp.suspend(Pbindef(\perc1));
-			sp.suspend(Pbindef(\perc2));
-			sp.suspend(Pbindef(\p0));
-			postln("todo detenido")
-		};
-		sp.wait(1)
-	};*/
 
 
 })).play(~t, quant: 1);
 )
 
 Pdef(\lsystem).stop
+
+
+
+

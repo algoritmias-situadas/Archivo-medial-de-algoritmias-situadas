@@ -1,5 +1,5 @@
 SynthDef(\sampler, {
-    arg out = 0, buf = 0, baseMidi = 0, rate = 1, start = 0, atk=0.01, dec=0.3, sus=1, rel=1, gate=1,amp= -14.dbamp, sendLvl = 0, sendBus, pan=0, loop=0;
+    arg out = 0, buf = 0, baseMidi = 60, rate = 1, start = 0, atk=0.01, dec=0.3, sus=1, rel=1, gate=1,amp= -14.dbamp, sendLvl = 0, sendBus, pan=0, loop=0;
 
     var rateMod, frames, sig, env, lfo;
     var sig1Shot, sigLoop, phase1, phase2, win1, win2;
@@ -32,6 +32,10 @@ SynthDef(\sampler, {
     Out.ar(sendBus, sig * sendLvl);
 }).add;
 
+/*x = Synth(\sampler,[buf: ~pad[\buf], baseMidi: ~pad[\raiz]])
+
+x.set(\gate, 0)*/
+
 
 SynthDef(\rt, { // sintetizador de silencio
 	var sig = 0, env = EnvGen.kr(Env.perc(0.01, 0.01), doneAction: 2);
@@ -39,7 +43,7 @@ SynthDef(\rt, { // sintetizador de silencio
 }).add;
 
 SynthDef(\bb, {
-    arg out=0, freq=440, amp=0.5, pan=0, rel=0.15, sendBus, sendLvl = 0.8;
+    arg out=0, freq=440, amp=0.2, pan=0, rel=0.15, sendBus, sendLvl = 0.2;
     var env, pitchEnv, sig;
 
     env = EnvGen.kr(Env.perc(0.01, rel), doneAction: 2);
@@ -52,6 +56,7 @@ SynthDef(\bb, {
     Out.ar(sendBus, sig * sendLvl);
 
 }).add;
+
 
 
 SynthDef(\sawLead, {
@@ -85,9 +90,9 @@ SynthDef(\sawLead, {
 
 
 SynthDef(\s3, {
-	arg out = 0, pan=0, amp = -3.dbamp, sendLvl = 0, sendBus;
+	arg out = 0, pan=0, amp = -3.dbamp, sendLvl = 0, sendBus = ~reverbBus;
 	var sig;
-	sig = SinOsc.ar(Env([1000, 210, 0], [0.005, 0.05, 0.4], [-2, -0.5]).ar, pi/2);
+	sig = SinOsc.ar(Env([1000, 210, 0], [0.005, 0.05], [-2, -0.5]).ar, pi/2);
 	sig = sig * Env.perc(0.005, 0.15, curve: -12).ar(Done.freeSelf);
 	sig = sig + (BRF.ar(WhiteNoise.ar, 500, 0.5, 0.2) * Env.perc(0.02, 0.2, curve: -12).ar * -20.dbamp);
 	sig = sig * amp;
@@ -96,13 +101,14 @@ SynthDef(\s3, {
     Out.ar(sendBus, sig * sendLvl);
 }).add;
 
-
+// prueba
+//Synth(\s3, [\amp, -2.dbamp, \sendBus, ~reverbBus, \sendLvl, 0], ~master)
 
 SynthDef(\k1, {
-	arg out = 0, pan=0, amp = -2.dbamp, sendLvl = 0, sendBus;
+	arg out = 0, pan=0, amp = -2.dbamp, sendLvl = 0, sendBus = 0;
 	var sig;
-	sig = SinOsc.ar(Env([1000, 50, 10], [0.005, 0.2, 0.2], [-2, -0.5]).ar, pi/2);
-	sig = sig * Env.perc(0.005, 0.4, curve: -12).ar(Done.freeSelf);
+	sig = SinOsc.ar(Env([500, 50, 10], [0.05, 0.2], [-2, -0.5]).ar, pi/2);
+	sig = sig * Env.perc(0.0005, 0.4, curve: -12).ar(Done.freeSelf);
 	sig = HPF.ar(sig, 48, 1);
 	sig = sig * amp;
 	sig = Pan2.ar(sig, pan);
@@ -110,7 +116,8 @@ SynthDef(\k1, {
     Out.ar(sendBus, sig * sendLvl);
 }).add;
 
-
+// prueba
+//Synth(\k1, [\amp, -2.dbamp, \sendLvl, 0.1, \sendBus, ~reverbBus], ~master)
 
 
 

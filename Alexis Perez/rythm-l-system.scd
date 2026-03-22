@@ -23,39 +23,26 @@
 	\hh: [\rt, \hh, \rt, \rt, \rt, \hh, \hh, \rt],
 );
 
-~lm = Prewrite(
-	3, // inicio
-	 // patrones
-	~patronesDg,
-	2 // niveles
-);
+~lm = Prewrite( 3, ~patronesDg, 2);
+~lmStream = ~lm.asStream;
 
 
-~linst1 = Prewrite(
-	\k1, // inicio
-	~patronesPerc1,
-	3 // niveles
-);
+~linst1 = Prewrite(\k1, ~patronesPerc1, 3);
 
-~linst2 = Prewrite(
-	\hh, // inicio
-	~patronesPerc2,
-	3 // niveles
-);
-
+~linst2 = Prewrite(\hh, ~patronesPerc2, 3);
 
 Pdef(\perc1,
     Pbind(
         \dur, 0.25,
         \instrument, ~linst1,
 		\sendBus, ~reverbBus,
-		\sendLvl, 0.4,
+		\sendLvl, 0.2,
 		\scale, Scale.minorPentatonic,
+		\amp, -4.dbamp,
 		\degree, Pfunc({ |ev|
 			var stream;
-			if (ev[\instrument] == \bb) { // Si el instrumento elegido en este paso es \bb...
-				stream = ~lm.asStream;
-				stream.next; // ... se obtiene el siguiente valor al stream tonal
+			if (ev[\instrument].debug == \bb) { // Si el instrumento elegido en este paso es \bb...
+				~lmStream.next.debug("lm stream"); // ... se obtiene el siguiente valor al stream tonal
 			} {
 				0
 			};
@@ -70,13 +57,13 @@ Pdef(\perc2,
         \dur, 0.25,
         \instrument, ~linst2,
 		\sendBus, ~reverbBus,
-		\sendLvl, 0.4,
+		\sendLvl, 0.2,
 		\scale, Scale.minorPentatonic,
+		\amp, -4.dbamp,
         \degree, Pfunc({ |ev|
 			var stream;
-            if (ev[\instrument] == \bb) { // Si el instrumento elegido en este paso es \bb...
-                stream = ~lm.asStream;
-				stream.next; // ... se obtiene el siguiente valor al stream tonal
+            if (ev[\instrument].debug == \bb) {
+				~lmStream.next.debug("lm stream");
 			} {
 				0
 			};

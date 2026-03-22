@@ -1,4 +1,3 @@
-//FUNCIÓN QUE INICIALIZAN SISTEMA//
 
 ~inicio = {
 
@@ -27,5 +26,19 @@
 
 
 }.fork(AppClock);
+
+
+~envAutom = { // envolvente para automatización
+	arg bus, lvls, times, curve;
+	var env = Env( levels: lvls, times: times, curve: curve);
+	Out.kr(bus, EnvGen.kr(env, doneAction: 2));
+};
+
+~envAutomSim = { // envolvente para automatización simetrica
+	arg bus, lvls, time, curve;
+	var times = (lvls.size - 1).collect({ arg i; lvls[i] + (time / lvls.size)});
+	var env = Env( levels: lvls, times: times, curve: curve);
+	Out.kr(bus, EnvGen.kr(env, doneAction: 2));
+};
 
 postln("inicio.scd cargado");
