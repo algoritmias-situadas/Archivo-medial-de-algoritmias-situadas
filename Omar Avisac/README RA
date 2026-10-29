@@ -1,0 +1,13 @@
+Hola, gracias por leer. 
+
+Este pequeño archivo readme tiene la intención de que te familiarices con los proyectos que en mi caso particular presento dentro de este repositorio. 
+
+Como primera consideración me gustaría que tomes en cuenta que estos trabajos fueron hechos desde una computadora Mac, así que si no cuentas con un equipo de este tipo tendrás que hacer algunas adecuaciones para que estos códigos puedan trabajar en la manera en la que fueron diseñados. No te preocupes, estos cambios que probablemente tengas que hacer están comentados en el código y son sumamente sencillos de realizar, así que siéntete despreocupado en ese sentido. 
+
+Como segunda consideración mucho del código se encuentra comentado, esto con la intención de facilitar el entendimiento de que hace cada cosa y como funciona, para que así tu también puedas manipular el código y una vez lo hayas entendido, puedas crear mas piezas a partir de este. Tampoco creas que tendrás que leer mucho para entender que hace cada cosa, en dado caso que te interese indagar un poco mas puedes leer el texto completo en el que comento y explico de donde viene todo y como funciona a detalle, en este caso son pequeñas notas que dicen que es que.
+
+Como ultimo considerando como ya lo mencionaba tendrás tal vez que hacer algunos ajustes en tu equipo para que el código pueda trabajar de manera correcta, esto se debe a la interconexión de programas bajo el cual trabaje estas piezas/codigos/instrumentos. Y para ser especifico me refiero a la conexión entre Spercollider y Ableton live 10 que hay en las piezas, esto es lo que a mi parecer vuelve aun mas interesante a estas piezas que ya tendrás el tiempo de revisar, de nueva cuenta no te preocupes si cuentas con Ableton, el archivo .als de cada uno de los proyectos estará aparejado con el archivo de código, al igual que algunos archivos complementarios de audio que se llegan a utilizar en Supercollider, dentro del repositorio. Esto te permitirá bajarlo y no tendrás que hacer mucho mas que esto dentro del mismo revisar que este correctas las entradas midi de los instrumentos virtuales, ojo aquí, para estos proyectos de Ableton en ningún momento utilice vst, todo esta trabajado con la librería básica de instrumentos de Ablenton esto para que sea mas fácil para ti.  En dado caso que quieras hacerlo con otro Daw siéntete libre de hacerlo el resultado sonoro no será el mismo pero si parecido, entonces esto abre las posibilidades para que empieces a jugar y a crear tus propias composiciones con esto.
+
+Siendo así no hay Nada mas que agregar mas que espero que disfrutes este trabajo y lo aproveches como tu quieras, 
+
+ATTE: OMAR AVISAC AKA RA. 
